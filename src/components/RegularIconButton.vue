@@ -1,52 +1,34 @@
 <template>
-  <component
-    :is="tag === 'link' ? 'BaseLink' : 'BaseButton'"
+  <BaseButton
     :type="type"
     @mouseenter.native="onHover"
     @mouseleave.native="onHover"
     :onClick="onClick"
     :disabled="disabled"
     :size="size"
+    tag="icon"
   >
-    {{ text }}
-    <LoaderIcon v-if="isLoading" :type="type" :tag="tag" />
-    <ArrowIcon
-      v-else-if="icon"
-      :hover="hover"
-      :type="type"
-      :tag="tag"
-      :disabled="disabled"
-    />
-  </component>
+    {{ text ? text + '&nbsp;' : '' }}
+
+    <slot />
+  </BaseButton>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import BaseButton from './ui/BaseButton.vue';
-import BaseLink from './ui/BaseLink.vue';
-import ArrowIcon from './icons/ArrowIcon.vue';
-import LoaderIcon from './icons/LoaderIcon.vue';
 
 @Component({
   components: {
-    BaseLink,
     BaseButton,
-    ArrowIcon,
-    LoaderIcon,
   },
 })
 export default class RegularButton extends Vue {
   @Prop({
     type: String,
-    required: true,
+    default: '',
   })
   readonly text!: string;
-
-  @Prop({
-    type: String,
-    default: 'button',
-  })
-  readonly tag!: 'link' | 'button';
 
   @Prop({
     type: String,
@@ -61,10 +43,9 @@ export default class RegularButton extends Vue {
   readonly size!: 'small' | 'default' | 'large';
 
   @Prop({
-    type: Boolean,
-    default: false,
+    type: Vue,
   })
-  readonly icon!: boolean;
+  readonly icon!: any;
 
   @Prop({
     type: Boolean,
@@ -92,80 +73,61 @@ export default class RegularButton extends Vue {
 </script>
 
 <style scoped>
-.base-button {
-  border-radius: 8px;
+.base-icon {
+  border-radius: 4px;
   font-weight: 500;
-
   display: flex;
 }
 
-.base-button-small {
-  padding: 5px 10px;
+.base-icon-small {
+  padding: 2px;
   font-size: 14px;
 }
-.base-button-default {
-  padding: 6px 12px;
+.base-icon-default {
+  padding: 4px;
   font-size: 16px;
 }
-.base-button-large {
-  padding: 6px 12px;
+.base-icon-large {
+  padding: 6px;
   font-size: 18px;
 }
 
-.base-button:hover > div > .svg-default:first-child {
+.base-icon:hover > div > .svg-default:first-child {
   opacity: 0;
 }
 
-.base-button.primary {
+.base-icon.primary {
   color: #fff;
   background: #0066ff;
 }
 
-.base-button.primary:hover {
+.base-icon.primary:hover {
   background: #0057d9;
 }
-.base-button.primary:active {
+.base-icon.primary:active {
   transform: scale(0.9);
 }
-.base-button.black {
+.base-icon.black {
   background: #000;
   color: #fff;
 }
-.base-button.black:active {
+.base-icon.black:active {
   transform: scale(0.8);
 }
 
-.base-button.secondary {
+.base-icon.secondary {
   color: #0066ff;
   background: transparent;
+  border: 2px #f6f9fc solid;
 }
 
-.base-button.secondary:hover {
+.base-icon.secondary:hover {
   color: #0057d9;
+  background: #f6f9fc;
 }
 
-.base-link {
-  padding: 0 12px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.base-link.primary {
-  color: #0066ff;
-}
-
-.base-link.primary:hover {
-  color: #0057d9;
-}
-
-.base-link.black {
-  color: #fff;
-}
-
-.base-button:disabled,
-.base-button:disabled:hover {
+.base-icon:disabled,
+.base-icon:disabled:hover {
   background: #e8ebf2;
   color: #6e829a;
 }
