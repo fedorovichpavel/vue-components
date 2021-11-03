@@ -5,57 +5,73 @@
     <div class="promo-btns">
       <RegularButton
         type="primary"
-        text="Primary"
         tag="button"
-        icon
+        isIcon
         :onClick="click"
         :isLoading="isLoading"
-      />
-      <RegularButton type="black" text="Black" tag="button" icon />
-      <RegularButton type="secondary" text="Secondary" tag="button" icon />
+        >Action</RegularButton
+      >
+      <RegularButton type="black" tag="button" isIcon>Black</RegularButton>
+      <RegularButton type="secondary" tag="button" isIcon
+        >Secondary</RegularButton
+      >
     </div>
     <div class="promo-btns">
-      <RegularButton type="primary" text="Primary" tag="button" size="small" />
+      <RegularButton type="primary" tag="button" size="s"
+        >Primary</RegularButton
+      >
       <RegularButton
         type="black"
-        text="Black"
         tag="button"
         :onClick="click2"
         :isLoading="isLoading2"
-      />
-      <RegularButton type="secondary" text="Secondary" tag="button" />
+        >Black</RegularButton
+      >
+      <RegularButton type="secondary" tag="button">Secondary</RegularButton>
     </div>
     <div class="promo-btns">
-      <RegularButton type="primary" text="Primary" tag="button" size="small" />
+      <RegularButton type="primary" tag="button" size="s"
+        >Primary</RegularButton
+      >
       <RegularButton
         type="primary"
-        text="Primary"
         tag="button"
-        size="large"
+        size="l"
         :onClick="click3"
         :isLoading="isLoading3"
-      />
-      <RegularButton type="primary" text="Primary" tag="button" />
+        >Primary</RegularButton
+      >
+      <RegularButton type="primary" tag="button">Primary</RegularButton>
     </div>
     <div class="promo-btns">
-      <RegularButton type="black" text="Primary" tag="button" size="small" />
-      <RegularButton type="black" text="Primary" tag="button" size="large" />
-      <RegularButton type="black" text="Primary" tag="button" />
+      <RegularButton type="black" tag="button" size="s">Black</RegularButton>
+      <RegularButton type="black" tag="button" size="l">Black</RegularButton>
+      <RegularButton type="black" tag="button">Black</RegularButton>
     </div>
     <div class="promo-btns">
-      <RegularButton type="primary" text="Primary" tag="button" disabled />
-      <RegularButton type="black" text="Black" tag="button" icon disabled />
-      <RegularButton type="secondary" text="Secondary" tag="button" disabled />
+      <RegularButton type="primary" tag="button" isDisabled
+        >Primary</RegularButton
+      >
+      <RegularButton type="black" tag="button" isIcon isDisabled
+        >Black</RegularButton
+      >
+      <RegularButton type="secondary" tag="button" isDisabled
+        >Secondary</RegularButton
+      >
     </div>
     <div class="promo-btns">
-      <RegularButton type="primary" text="Primary" tag="button" isLoading />
-      <RegularButton type="black" text="Black" tag="button" isLoading />
-      <RegularButton type="secondary" text="Secondary" tag="button" isLoading />
+      <RegularButton type="primary" tag="button" isLoading
+        >Primary</RegularButton
+      >
+      <RegularButton type="black" tag="button" isLoading>Black</RegularButton>
+      <RegularButton type="secondary" tag="button" isLoading
+        >Secondary</RegularButton
+      >
     </div>
     <div class="promo-btns">
-      <RegularButton type="primary" text="Primary" tag="button" />
-      <RegularButton type="black" text="Black" tag="button" />
-      <RegularButton type="secondary" text="Secondary" tag="button" />
+      <RegularButton type="primary" tag="button">Primary</RegularButton>
+      <RegularButton type="black" tag="button">Black</RegularButton>
+      <RegularButton type="secondary" tag="button">Secondary</RegularButton>
     </div>
     <h2>Icons</h2>
     <div class="promo-btns">
@@ -64,22 +80,22 @@
       <RegularIconButton type="secondary"><TestIcon /></RegularIconButton>
     </div>
     <div class="promo-btns">
-      <RegularIconButton text="primary" type="primary"
-        ><TestIcon
-      /></RegularIconButton>
-      <RegularIconButton text="black" type="black"
-        ><TestIcon
-      /></RegularIconButton>
-      <RegularIconButton text="secondary" type="secondary"
-        ><TestIcon
-      /></RegularIconButton>
+      <RegularButton type="primary" tag="button" size="s" border="s">
+        Primary <TestIcon />
+      </RegularButton>
+      <RegularButton type="black" tag="button" size="s" border="s">
+        Black <TestIcon />
+      </RegularButton>
+      <RegularButton type="secondary" tag="button" size="s" border="s">
+        Secondary <TestIcon />
+      </RegularButton>
     </div>
     <h2>Links</h2>
     <div class="promo-btns">
-      <RegularButton type="black" text="Black" tag="link" icon />
-      <RegularButton type="black" text="Black" tag="link" />
-      <RegularButton type="primary" text="Black" tag="link" icon />
-      <RegularButton type="primary" text="Black" tag="link" />
+      <RegularButton type="black" tag="link" isIcon>Black</RegularButton>
+      <RegularButton type="black" tag="link">Black</RegularButton>
+      <RegularButton type="primary" tag="link" isIcon>Black</RegularButton>
+      <RegularButton type="primary" tag="link">Black</RegularButton>
     </div>
   </div>
 </template>

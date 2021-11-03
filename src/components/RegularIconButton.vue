@@ -1,57 +1,54 @@
 <template>
-  <BaseButton
+  <RegularButton
     :type="type"
     @mouseenter.native="onHover"
     @mouseleave.native="onHover"
     :onClick="onClick"
-    :disabled="disabled"
+    :isDisabled="isDisabled"
     :size="size"
+    :border="border"
     tag="icon"
   >
-    {{ text ? text + '&nbsp;' : '' }}
-
     <slot />
-  </BaseButton>
+  </RegularButton>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import BaseButton from './ui/BaseButton.vue';
+import RegularButton from './RegularButton.vue';
 
 @Component({
   components: {
-    BaseButton,
+    RegularButton,
   },
 })
-export default class RegularButton extends Vue {
-  @Prop({
-    type: String,
-    default: '',
-  })
-  readonly text!: string;
-
+export default class RegularButtonIcon extends Vue {
   @Prop({
     type: String,
     default: 'primary',
+    validator: (val) => {
+      return ['primary', 'black', 'secondary'].includes(val);
+    },
   })
   readonly type!: 'primary' | 'black' | 'secondary';
 
   @Prop({
     type: String,
-    default: 'default',
+    default: 's',
   })
-  readonly size!: 'small' | 'default' | 'large';
+  readonly size!: 's' | 'm' | 'l';
 
   @Prop({
-    type: Vue,
+    type: String,
+    default: 's',
   })
-  readonly icon!: any;
+  readonly border!: 's' | 'm' | 'l';
 
   @Prop({
     type: Boolean,
     default: false,
   })
-  readonly disabled!: boolean;
+  readonly isDisabled!: boolean;
 
   @Prop({
     type: Boolean,
@@ -62,7 +59,7 @@ export default class RegularButton extends Vue {
   @Prop({
     type: Function,
   })
-  readonly onClick!: () => Promise<void>;
+  readonly onClick!: <Type>() => Type | Promise<Type>;
 
   hover = false;
 
@@ -72,63 +69,4 @@ export default class RegularButton extends Vue {
 }
 </script>
 
-<style scoped>
-.base-icon {
-  border-radius: 4px;
-  font-weight: 500;
-  display: flex;
-}
-
-.base-icon-small {
-  padding: 2px;
-  font-size: 14px;
-}
-.base-icon-default {
-  padding: 4px;
-  font-size: 16px;
-}
-.base-icon-large {
-  padding: 6px;
-  font-size: 18px;
-}
-
-.base-icon:hover > div > .svg-default:first-child {
-  opacity: 0;
-}
-
-.base-icon.primary {
-  color: #fff;
-  background: #0066ff;
-}
-
-.base-icon.primary:hover {
-  background: #0057d9;
-}
-.base-icon.primary:active {
-  transform: scale(0.9);
-}
-.base-icon.black {
-  background: #000;
-  color: #fff;
-}
-.base-icon.black:active {
-  transform: scale(0.8);
-}
-
-.base-icon.secondary {
-  color: #0066ff;
-  background: transparent;
-  border: 2px #f6f9fc solid;
-}
-
-.base-icon.secondary:hover {
-  color: #0057d9;
-  background: #f6f9fc;
-}
-
-.base-icon:disabled,
-.base-icon:disabled:hover {
-  background: #e8ebf2;
-  color: #6e829a;
-}
-</style>
+<style scoped></style>
