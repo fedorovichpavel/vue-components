@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
-    <h1>Promo site Buttons</h1>
+  <div id="app" class="app">
+    <h1 class="app__title">Promo site Buttons</h1>
     <h2>Buttons</h2>
-    <div class="promo-btns">
+    <div class="app__promo-btns">
       <RegularButton
         type="primary"
         tag="button"
@@ -16,7 +16,7 @@
         >Secondary</RegularButton
       >
     </div>
-    <div class="promo-btns">
+    <div class="app__promo-btns">
       <RegularButton type="primary" tag="button" size="s"
         >Primary</RegularButton
       >
@@ -29,7 +29,7 @@
       >
       <RegularButton type="secondary" tag="button">Secondary</RegularButton>
     </div>
-    <div class="promo-btns">
+    <div class="app__promo-btns">
       <RegularButton type="primary" tag="button" size="s"
         >Primary</RegularButton
       >
@@ -43,12 +43,12 @@
       >
       <RegularButton type="primary" tag="button">Primary</RegularButton>
     </div>
-    <div class="promo-btns">
+    <div class="app__promo-btns">
       <RegularButton type="black" tag="button" size="s">Black</RegularButton>
       <RegularButton type="black" tag="button" size="l">Black</RegularButton>
       <RegularButton type="black" tag="button">Black</RegularButton>
     </div>
-    <div class="promo-btns">
+    <div class="app__promo-btns">
       <RegularButton type="primary" tag="button" isDisabled
         >Primary</RegularButton
       >
@@ -59,7 +59,7 @@
         >Secondary</RegularButton
       >
     </div>
-    <div class="promo-btns">
+    <div class="app__promo-btns">
       <RegularButton type="primary" tag="button" isLoading
         >Primary</RegularButton
       >
@@ -68,18 +68,24 @@
         >Secondary</RegularButton
       >
     </div>
-    <div class="promo-btns">
+    <div class="app__promo-btns">
       <RegularButton type="primary" tag="button">Primary</RegularButton>
       <RegularButton type="black" tag="button">Black</RegularButton>
       <RegularButton type="secondary" tag="button">Secondary</RegularButton>
     </div>
     <h2>Icons</h2>
-    <div class="promo-btns">
-      <RegularIconButton type="primary"><TestIcon /></RegularIconButton>
-      <RegularIconButton type="black"><TestIcon /></RegularIconButton>
-      <RegularIconButton type="secondary"><TestIcon /></RegularIconButton>
+    <div class="app__promo-btns">
+      <RegularIconButton type="primary" size="xxs"
+        ><TestIcon
+      /></RegularIconButton>
+      <RegularIconButton type="black" size="xxs"
+        ><TestIcon
+      /></RegularIconButton>
+      <RegularIconButton type="secondary" size="xxs"
+        ><TestIcon
+      /></RegularIconButton>
     </div>
-    <div class="promo-btns">
+    <div class="app__promo-btns">
       <RegularButton type="primary" tag="button" size="s" border="s">
         Primary <TestIcon />
       </RegularButton>
@@ -91,11 +97,11 @@
       </RegularButton>
     </div>
     <h2>Links</h2>
-    <div class="promo-btns">
-      <RegularButton type="black" tag="link" isIcon>Black</RegularButton>
-      <RegularButton type="black" tag="link">Black</RegularButton>
-      <RegularButton type="primary" tag="link" isIcon>Black</RegularButton>
-      <RegularButton type="primary" tag="link">Black</RegularButton>
+    <div class="app__promo-btns">
+      <RegularLink type="link-black" tag="link" isIcon>Black</RegularLink>
+      <RegularLink type="link-black" tag="link">Black</RegularLink>
+      <RegularLink type="link-primary" tag="link" isIcon>Black</RegularLink>
+      <RegularLink type="link-primary" tag="link">Black</RegularLink>
     </div>
   </div>
 </template>
@@ -103,12 +109,14 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import RegularButton from './components/RegularButton.vue';
+import RegularLink from './components/RegularLink.vue';
 import RegularIconButton from './components/RegularIconButton.vue';
 import TestIcon from './components/icons/TestIcon.vue';
 
 @Component({
   components: {
     RegularButton,
+    RegularLink,
     RegularIconButton,
     TestIcon,
   },
@@ -145,7 +153,7 @@ export default class App extends Vue {
 </script>
 
 <style>
-#app {
+.app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -153,7 +161,7 @@ export default class App extends Vue {
   color: #2c3e50;
   margin: 60px 120px;
 }
-h1 {
+.app__title {
   font-weight: 500;
   font-size: 60px;
   line-height: 70px;
@@ -161,7 +169,7 @@ h1 {
   text-align: left;
 }
 
-.promo-btns {
+.app__promo-btns {
   display: flex;
   align-items: center;
   column-gap: 30px;
@@ -169,7 +177,7 @@ h1 {
   padding-bottom: 60px;
 }
 
-.promo-btns:last-child {
+.app__promo-btns:last-child {
   background: linear-gradient(
     to right,
     transparent 0%,

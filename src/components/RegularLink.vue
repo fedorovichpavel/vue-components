@@ -7,37 +7,39 @@
     :disabled="isDisabled"
     :isHover="isHover"
   >
-    <BaseButton
+    <BaseLink
       @mouseenter.native="onHover"
       @mouseleave.native="onHover"
       :onClick="onClick"
       :disabled="isDisabled"
       :class="className"
+      :href="href"
+      :target="target"
     >
       <slot />
-    </BaseButton>
+    </BaseLink>
   </StylesWrapperButton>
 </template>
 
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';
-import BaseButton from './ui/BaseButton.vue';
+import BaseLink from './ui/BaseLink.vue';
 import ArrowIcon from './icons/ArrowIcon.vue';
 import LoaderIcon from './icons/LoaderIcon.vue';
+
 import StylesWrapperButton from './ui/StylesWrapperButton.vue';
 
 @Component({
   components: {
     StylesWrapperButton,
-    BaseButton,
+    BaseLink,
     ArrowIcon,
     LoaderIcon,
   },
 })
 export default class RegularButton extends Mixins(
   StylesWrapperButton,
-
-  BaseButton
+  BaseLink
 ) {}
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <button @click="click">
+  <button @click="click" class="base-button">
     <slot />
   </button>
 </template>
@@ -12,7 +12,7 @@ export default class BaseButton extends Vue {
   @Prop({
     type: Function,
   })
-  readonly onClick!: (a: Event) => Promise<void> | any;
+  readonly onClick!: <T>(a: Event) => Promise<T> | T;
 
   click(event: Event) {
     if (typeof this.onClick === 'function') {
@@ -24,7 +24,7 @@ export default class BaseButton extends Vue {
 </script>
 
 <style scoped>
-button {
+.base-button {
   padding: 0;
   margin: 0;
   text-decoration: none;
