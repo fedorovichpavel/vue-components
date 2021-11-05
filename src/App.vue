@@ -75,15 +75,9 @@
     </div>
     <h2>Icons</h2>
     <div class="app__promo-btns">
-      <RegularIconButton type="primary" size="xxs"
-        ><TestIcon
-      /></RegularIconButton>
-      <RegularIconButton type="black" size="xxs"
-        ><TestIcon
-      /></RegularIconButton>
-      <RegularIconButton type="secondary" size="xxs"
-        ><TestIcon
-      /></RegularIconButton>
+      <RegularButton type="primary" size="xxs"><TestIcon /></RegularButton>
+      <RegularButton type="black" size="xxs"><TestIcon /></RegularButton>
+      <RegularButton type="secondary" size="xxs"><TestIcon /></RegularButton>
     </div>
     <div class="app__promo-btns">
       <RegularButton type="primary" tag="button" size="s" border="s">
@@ -108,16 +102,13 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import RegularButton from './components/RegularButton.vue';
-import RegularLink from './components/RegularLink.vue';
-import RegularIconButton from './components/RegularIconButton.vue';
+import { RegularButton, RegularLink } from './components/buttons';
 import TestIcon from './components/icons/TestIcon.vue';
 
 @Component({
   components: {
     RegularButton,
     RegularLink,
-    RegularIconButton,
     TestIcon,
   },
 })

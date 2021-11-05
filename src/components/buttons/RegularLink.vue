@@ -12,7 +12,7 @@
       @mouseleave.native="onHover"
       :onClick="onClick"
       :disabled="isDisabled"
-      :class="className"
+      :class="classList"
       :href="href"
       :target="target"
     >
@@ -23,11 +23,11 @@
 
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';
-import BaseLink from './ui/BaseLink.vue';
-import ArrowIcon from './icons/ArrowIcon.vue';
-import LoaderIcon from './icons/LoaderIcon.vue';
+import BaseLink from '../ui/BaseLink.vue';
+import ArrowIcon from '../icons/ArrowIcon.vue';
+import LoaderIcon from '../icons/LoaderIcon.vue';
 
-import StylesWrapperButton from './ui/StylesWrapperButton.vue';
+import StylesWrapperButton from './styles/StylesWrapperButton.vue';
 
 @Component({
   components: {

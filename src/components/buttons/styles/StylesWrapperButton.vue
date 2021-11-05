@@ -1,8 +1,8 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import SameLinkBtnProps from './SameLinkBtnProps.vue';
-import ArrowIcon from '../icons/ArrowIcon.vue';
-import LoaderIcon from '../icons/LoaderIcon.vue';
+import SameLinkBtnProps from '../props/SameLinkBtnProps.vue';
+import ArrowIcon from '../../icons/ArrowIcon.vue';
+import LoaderIcon from '../../icons/LoaderIcon.vue';
 
 @Component({
   components: {
@@ -18,17 +18,23 @@ class StylesWrapperButton extends SameLinkBtnProps {
       : 'url(#paint0_angular_4802:187)';
   }
 
-  get arrowIconClassName() {
-    return 'styles-wrapper-button__icon styles-wrapper-button__icon_fill';
+  get arrowIconClassList() {
+    return ['styles-wrapper-button__icon', 'styles-wrapper-button__icon_fill'];
   }
-  get className() {
-    return `styles-wrapper-button styles-wrapper-button_size_${this.size} styles-wrapper-button_type_${this.type} styles-wrapper-button_border-radius-size_${this.border}`;
+  get classList() {
+    return [
+      `styles-wrapper-button styles-wrapper-button_size_${this.size}`,
+      `styles-wrapper-button_type_${this.type}`,
+      `styles-wrapper-button_border-radius-size_${this.border}`,
+      this.indent ? `styles-wrapper-button_indent_${this.indent}` : '',
+    ];
   }
 
   render(h: (tagName: any, options: any, children?: any) => HTMLElement) {
     if (
       this.$slots.default &&
-      this.$slots.default[0].componentOptions?.children
+      this.$slots.default[0].componentOptions &&
+      this.$slots.default[0].componentOptions.children
     ) {
       if (this.isIcon) {
         this.$slots.default[0].componentOptions.children.push(
@@ -36,7 +42,7 @@ class StylesWrapperButton extends SameLinkBtnProps {
             attrs: {
               isHover: this.isHover,
             },
-            class: this.arrowIconClassName,
+            class: this.arrowIconClassList,
           })
         );
       }
@@ -159,6 +165,18 @@ export default StylesWrapperButton;
   border-radius: 8px;
 }
 
+.styles-wrapper-button_indent_s {
+  padding: 0 5px;
+}
+
+.styles-wrapper-button_indent_m {
+  padding: 0 10px;
+}
+
+.styles-wrapper-button_indent_l {
+  padding: 0 20px;
+}
+
 /* ICON */
 
 .styles-wrapper-button >>> .styles-wrapper-button__icon {
@@ -167,6 +185,7 @@ export default StylesWrapperButton;
   align-self: center;
   transition: all 0.5s;
   right: 0;
+  min-width: 15px;
 }
 
 .styles-wrapper-button.styles-wrapper-button_type_primary
@@ -195,9 +214,9 @@ export default StylesWrapperButton;
   content: '';
   height: 2px;
   width: 0;
-  top: 45%;
+  top: 50%;
   left: 4px;
-  transform: translateX(50%);
+  transform: translate(50%, -50%);
   transition: all 0.3s;
 }
 
@@ -235,8 +254,8 @@ export default StylesWrapperButton;
   >>> .styles-wrapper-button__icon::after,
 .styles-wrapper-button-link:hover.styles-wrapper-button
   >>> .styles-wrapper-button__icon::after {
-  width: 12px;
-  left: -12px;
+  width: 9px;
+  left: -9px;
 }
 
 .styles-wrapper-button:disabled:hover.styles-wrapper-button

@@ -46,4 +46,8 @@ export default class BaseLink extends Vue {
   transition: 0.4s all;
   display: flex;
 }
+
+.base-link:hover {
+  text-decoration: underline;
+}
 </style>

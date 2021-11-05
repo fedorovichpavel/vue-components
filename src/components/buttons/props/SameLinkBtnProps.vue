@@ -32,6 +32,11 @@ export default class SameLinkBtnProps extends Vue {
   readonly border!: 's' | 'm' | 'l';
 
   @Prop({
+    type: String,
+  })
+  readonly indent!: 's' | 'm' | 'l';
+
+  @Prop({
     type: Boolean,
     default: false,
   })

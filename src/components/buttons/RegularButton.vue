@@ -12,7 +12,7 @@
       @mouseleave.native="onHover"
       :onClick="onClick"
       :disabled="isDisabled"
-      :class="className"
+      :class="classList"
     >
       <slot />
     </BaseButton>
@@ -21,10 +21,10 @@
 
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';
-import BaseButton from './ui/BaseButton.vue';
-import ArrowIcon from './icons/ArrowIcon.vue';
-import LoaderIcon from './icons/LoaderIcon.vue';
-import StylesWrapperButton from './ui/StylesWrapperButton.vue';
+import BaseButton from '../ui/BaseButton.vue';
+import ArrowIcon from '../icons/ArrowIcon.vue';
+import LoaderIcon from '../icons/LoaderIcon.vue';
+import StylesWrapperButton from './styles/StylesWrapperButton.vue';
 
 @Component({
   components: {
@@ -36,7 +36,6 @@ import StylesWrapperButton from './ui/StylesWrapperButton.vue';
 })
 export default class RegularButton extends Mixins(
   StylesWrapperButton,
-
   BaseButton
 ) {}
 </script>
